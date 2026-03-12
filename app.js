@@ -1,0 +1,49 @@
+// app.js
+const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+
+const knowledgeBase = {
+    "what are cybersecurity threats": "Cybersecurity threats represent a diverse and highly sophisticated array of malicious activities executed by threat actors who aim to steal sensitive data, disrupt critical digital infrastructure, or extort financial resources. According to extensive related literature, these threats are no longer perpetrated by amateur hackers in basements; they are now driven by heavily funded organized crime syndicates and state-sponsored cyber warfare divisions. These threats relentlessly target vulnerabilities within computer networks, software applications, and crucially, human psychology, to achieve their destructive goals. To combat these ever-evolving dangers, organizations must implement comprehensive, multi-layered security frameworks and continuous education. [Source: CISA Cybersecurity Overview]",
+    "malware": "Malware, a portmanteau for malicious software, is the foundational weapon in a cybercriminal's arsenal, encompassing a vast spectrum of intrusive programs such as self-replicating worms, destructive viruses, and stealthy trojan horses. A prominent real-world example is the infamous Stuxnet worm, a highly complex piece of malware that was specifically engineered to physically destroy nuclear centrifuges by manipulating programmable logic controllers without the operators' knowledge. Modern malware often employs polymorphic capabilities, meaning it constantly rewrites its own code to evade detection by traditional, signature-based antivirus software. The literature heavily recommends utilizing advanced Endpoint Detection and Response (EDR) systems that analyze behavioral anomalies rather than relying solely on outdated file signatures. [Source: NIST Glossary - Malware]",
+    "phishing": "Phishing remains the most pervasive and successful form of social engineering, wherein attackers masquerade as highly trusted entities—such as national banks, massive e-commerce platforms, or even internal corporate executives—to deceive victims into surrendering confidential credentials. For instance, a targeted 'spear-phishing' attack might involve an attacker researching an employee on LinkedIn, then sending a highly convincing, forged email from their 'CEO' demanding an urgent wire transfer to a fraudulent account. These attacks are so dangerous because they completely bypass expensive network firewalls by directly exploiting human cognitive biases like fear, urgency, and obedience to authority. Defeating phishing requires a cultural shift within an organization, prioritizing continuous, realistic simulation training and strict adherence to out-of-band verification protocols. [Source: CISA Phishing Guidance]",
+    "ransomware": "Ransomware is an extraordinarily devastating category of malware that systematically encrypts a victim's files, databases, and entire networks using unbreakable cryptographic algorithms, effectively paralyzing the entire organization until a substantial financial ransom is paid. Cybercriminals have evolved this threat into 'double extortion,' where they not only lock the data but also exfiltrate highly sensitive information, threatening to publish it on the dark web if the victim attempts to restore from backups without paying. The Colonial Pipeline attack is a prime example, where a compromised password led to a ransomware deployment that disrupted fuel supplies across the Eastern United States, proving the physical-world impact of digital threats. Security frameworks explicitly demand maintaining immutable, offline backups that cannot be reached by network-crawling ransomware, alongside robust incident response plans. [Source: CISA Stop Ransomware]",
+    "man in the middle": "A Man-in-the-Middle (MitM) attack is a severe network interception technique where an invisible attacker actively monitors, captures, and potentially alters the real-time communication between a user and a legitimate service. This threat is predominantly executed on unsecured or poorly encrypted public Wi-Fi networks, where attackers use techniques like 'ARP spoofing' to trick your device into sending its traffic through the attacker's machine instead of the actual router. Imagine you are logging into your banking portal at a coffee shop; an attacker executing a MitM attack can silently strip away the SSL encryption, capturing your username and password in plain text before passing the connection along so you suspect nothing. The absolute necessity of using strong Virtual Private Networks (VPNs) and ensuring end-to-end encryption is heavily emphasized in all relevant security literature.",
+    "ddos": "A Distributed Denial-of-Service (DDoS) attack is a coordinated, volumetric assault designed to completely obliterate the availability of a targeted server, web application, or entire network by overwhelming it with a massive, unmanageable flood of internet traffic. Attackers orchestrate these massive data waves by commanding a 'botnet'—a sprawling network of thousands of previously infected devices, including hijacked smart TVs, unsecured home routers, and compromised computers worldwide. During the 2016 Dyn cyberattack, the Mirai botnet harnessed millions of unsecured Internet of Things (IoT) devices to launch a DDoS attack so massive it effectively took down major portions of the internet, including Twitter, Reddit, and Netflix. Mitigating such overwhelming force requires the implementation of highly specialized, cloud-based scrubbing centers capable of absorbing and filtering out malicious traffic before it reaches the core infrastructure.",
+    "social engineering": "Social engineering is the dark art of psychological manipulation, where cybercriminals completely bypass technical security controls by exploiting the human tendencies of trust, helpfulness, and fear to gain unauthorized physical or digital access. Beyond simple emails, this encompasses complex 'pretexting' scenarios where an attacker might spend weeks building a rapport with a target, perhaps posing as a legitimate vendor, before tricking them into revealing critical network architecture details. Another prime example is 'baiting,' where an attacker might leave a malware-infected USB drive labeled 'Q4 Employee Bonuses' in a company parking lot, relying on human curiosity to bypass the firewall when an employee plugs it into a networked computer. Building a truly resilient security posture requires creating an environment where employees feel fully empowered and encouraged to verify any unusual request, regardless of the requester's perceived rank. [Source: NIST Social Engineering Framework]",
+    "avoid malware": "To effectively avoid the devastating impacts of malware, individuals and organizations must adopt a stringent, multi-layered defense strategy starting with the deployment of reputable, commercially supported Endpoint Detection and Response (EDR) solutions. Furthermore, it is a critical necessity to implement aggressive patch management protocols, ensuring that operating systems, web browsers, and all third-party software are updated immediately, as threat actors constantly scan for unpatched vulnerabilities. Users must practice extreme digital hygiene by never clicking on unsolicited links, avoiding pirated software, and strictly disabling macros in downloaded office documents, which are a common delivery mechanism for malicious payloads. Ultimately, adopting a 'Zero Trust' architecture, where no application or user is trusted by default, significantly limits the lateral movement of malware if an initial infection occurs.",
+    "avoid phishing": "The cornerstone of avoiding phishing attacks lies in developing a deep-seated, healthy skepticism toward any unsolicited communication, particularly those that weaponize urgency or demand immediate access to sensitive credentials or financial resources. Before interacting with any link, users must meticulously inspect the sender's email address for subtle, easily missed anomalies—such as replacing the letter 'l' with the number '1' in a corporate domain name. It is heavily recommended to entirely bypass embedded links; instead, users should manually navigate to the organization's official website via a search engine or a trusted bookmark to authenticate the communication. Crucially, the mandatory enforcement of robust Multi-Factor Authentication (MFA) across all digital platforms ensures that even if a user falls victim to a deceptive phishing lure, the attacker cannot leverage the stolen password alone."
+};
+
+function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', sender === 'user' ? 'user-msg' : 'bot-msg');
+    msgDiv.innerHTML = text; 
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function handleChat() {
+    const text = userInput.value.trim().toLowerCase();
+    if (!text) return;
+    addMessage(userInput.value, 'user');
+    userInput.value = '';
+    
+    let responseFound = false;
+    for (const [key, answer] of Object.entries(knowledgeBase)) {
+        if (text.includes(key)) {
+            setTimeout(() => addMessage(answer, 'bot'), 700);
+            responseFound = true;
+            break;
+        }
+    }
+
+    if (!responseFound) {
+        setTimeout(() => addMessage("I am CyVoid. To provide you with the most accurate, evidence-based data from our research, please ask specifically about: cybersecurity threats, malware, phishing, ransomware, man in the middle, ddos, social engineering, or how to avoid them.", 'bot'), 700);
+    }
+}
+
+if(userInput) {
+    userInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') handleChat();
+    });
+}
