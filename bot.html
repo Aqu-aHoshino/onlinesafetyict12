@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CyVoid AI Chatbot | Cyber Threats</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <nav>
+        <a href="idx.html">Home</a>
+        <a href="mal.html">Malware</a>
+        <a href="ran.html">Ransomware</a>
+        <a href="dos.html">DDoS Attacks</a>
+        <a href="mim.html">MitM Attacks</a>
+        <a href="phi.html">Phishing</a>
+        <a href="soc.html">Social Engineering</a>
+        <a href="prv.html">Prevention Guide</a>
+        <a href="bot.html" class="active">CyVoid AI Chatbot</a>
+        <a href="sum.html">Summary & Credits</a>
+    </nav>
+
+    <div class="container">
+        <h1>Interactive AI Assistant: CyVoid</h1>
+        
+        <div class="content-wrapper">
+            <p><strong>How to utilize the CyVoid Assistant:</strong> Welcome to the highly interactive, dynamic portion of our research portal. CyVoid is an advanced, custom-built interface engineered using JavaScript to instantly pull highly detailed, fact-based answers directly from our extensive database of related literature, strict federal guidelines, and official cybersecurity recommendations. To interact with the database, simply type your specific query regarding cyber threats into the command input box located below and press "Ask CyVoid".</p>
+            
+            <p><strong>Recommended Research Queries:</strong><br>
+            • What are cybersecurity threats?<br>
+            • What is malware?<br>
+            • How can I avoid phishing?<br>
+            • What is ransomware?<br>
+            • What is a DDoS?<br>
+            • Explain man in the middle.<br>
+            • What is social engineering?<br>
+            • How to avoid malware?</p>
+
+            <div class="chat-container">
+                <div class="chat-header">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=CyVoid&backgroundColor=b6e3f4" alt="CyVoid Avatar">
+                    CyVoid Fact-Based Research Assistant
+                </div>
+                <div class="chat-box" id="chat-box">
+                    <div class="message bot-msg">Greetings! I am CyVoid, a cute little robot with a smiling face! I am loaded with extensive data from Group 3's research. How can I assist you with incredibly detailed facts about cyber threats today?</div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" placeholder="e.g. What is social engineering?">
+                    <button onclick="handleChat()">Ask CyVoid</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

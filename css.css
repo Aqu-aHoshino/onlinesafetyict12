@@ -1,0 +1,46 @@
+/* css.css */
+:root { --primary: #66fcf1; --secondary: #45a29e; --bg-dark: #0b0c10; --bg-light: #1f2833; --text-main: #c5c6c7; --white: #ffffff; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.8; font-size: 1.1rem; }
+a { text-decoration: none; color: var(--primary); transition: 0.3s; }
+a:hover { color: var(--white); text-decoration: underline; }
+
+/* Navigation */
+nav { background-color: var(--bg-light); padding: 15px; text-align: center; border-bottom: 2px solid var(--primary); display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;}
+nav a { font-weight: bold; font-size: 1rem; padding: 5px 10px; border-radius: 4px;}
+nav .active { background-color: var(--primary); color: var(--bg-dark); }
+
+/* Container & Typography */
+.container { max-width: 1200px; margin: 40px auto; padding: 40px; background: var(--bg-light); border-radius: 8px; box-shadow: 0 4px 25px rgba(102, 252, 241, 0.15); }
+h1 { color: var(--primary); text-align: center; font-size: 2.8rem; border-bottom: 2px solid var(--secondary); padding-bottom: 15px; margin-bottom: 25px; }
+h2 { color: var(--white); font-size: 2rem; margin-top: 40px; margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px;}
+p { margin-bottom: 25px; text-align: justify; }
+
+/* Images */
+.hero-img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 30px; border: 2px solid var(--secondary); }
+.icon-img { width: 200px; height: 200px; display: block; margin: 20px auto; }
+.content-wrapper { display: flex; flex-direction: column; gap: 20px; }
+
+/* Chatbot Floating Icon */
+.chatbot-float { position: fixed; bottom: 30px; right: 30px; background: var(--bg-light); border: 2px solid var(--primary); border-radius: 50%; padding: 15px; box-shadow: 0 0 20px rgba(102, 252, 241, 0.6); transition: transform 0.3s; z-index: 1000;}
+.chatbot-float:hover { transform: scale(1.15); }
+.chatbot-float img { width: 70px; height: 70px; }
+
+/* Chatbot UI */
+.chat-container { border: 2px solid var(--secondary); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; height: 600px; background: #000; }
+.chat-header { background: var(--primary); color: var(--bg-dark); padding: 20px; font-size: 1.2rem; font-weight: bold; text-align: center; display: flex; align-items: center; justify-content: center; gap: 15px;}
+.chat-header img { width: 50px; height: 50px; border-radius: 50%; background: var(--bg-dark);}
+.chat-box { flex: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+.message { padding: 15px 20px; border-radius: 8px; max-width: 85%; line-height: 1.6;}
+.bot-msg { background: var(--bg-light); color: var(--primary); align-self: flex-start; border-left: 5px solid var(--primary); }
+.user-msg { background: var(--secondary); color: var(--white); align-self: flex-end; border-right: 5px solid var(--bg-dark); }
+.chat-input-area { display: flex; padding: 15px; background: var(--bg-light); border-top: 1px solid var(--secondary);}
+.chat-input-area input { flex: 1; padding: 15px; border: none; border-radius: 4px; outline: none; background: var(--bg-dark); color: var(--white); font-size: 1.1rem;}
+.chat-input-area button { padding: 15px 30px; margin-left: 15px; background: var(--primary); border: none; color: var(--bg-dark); font-weight: bold; font-size: 1.1rem; cursor: pointer; border-radius: 4px; transition: 0.3s;}
+.chat-input-area button:hover { background: var(--white); }
+
+/* Credits */
+.credits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center; margin-top: 40px; }
+.credit-card { background: var(--bg-dark); padding: 20px; border: 1px solid var(--secondary); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+.credit-card h4 { color: var(--white); font-size: 1.2rem; margin-bottom: 5px;}
+footer { text-align: center; padding: 25px; margin-top: 50px; background: var(--bg-light); border-top: 2px solid var(--primary); }

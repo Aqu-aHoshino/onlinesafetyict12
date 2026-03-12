@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MitM Attacks | Cyber Threats</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <nav>
+        <a href="idx.html">Home</a>
+        <a href="mal.html">Malware</a>
+        <a href="ran.html">Ransomware</a>
+        <a href="dos.html">DDoS Attacks</a>
+        <a href="mim.html" class="active">MitM Attacks</a>
+        <a href="phi.html">Phishing</a>
+        <a href="soc.html">Social Engineering</a>
+        <a href="prv.html">Prevention Guide</a>
+        <a href="bot.html">CyVoid AI Chatbot</a>
+        <a href="sum.html">Summary & Credits</a>
+    </nav>
+
+    <div class="container">
+        <h1>Man-in-the-Middle (MitM) Interceptions</h1>
+
+        <div class="content-wrapper">
+            <h2>The Invisible Eavesdropper</h2>
+            <p>In a Man-in-the-Middle (MitM) attack, a highly skilled and malicious actor successfully, yet invisibly, positions themselves directly between two communicating parties—such as a user's laptop and their bank's web server—secretly intercepting, monitoring, and potentially maliciously altering the data transmission in real-time. The victims of this attack proceed with their digital interaction under the completely false assumption that they are communicating through a secure, direct, and private connection, totally unaware that an invisible proxy is reading every single keystroke. This severe security threat is most frequently and successfully executed on unsecured, easily spoofed public Wi-Fi networks commonly found in high-traffic public areas like airport lounges, coffee shops, and hotel lobbies, where attackers can easily deploy software to capture unencrypted data packets broadcasting through the air. For instance, an attacker sitting a few tables away might execute an "ARP spoofing" attack, tricking your specific device into believing the attacker's laptop is actually the cafe's legitimate router, forcing all of your outgoing web traffic, including highly sensitive login credentials and private emails, to flow directly through the attacker's surveillance tools. <em><a href="https://csrc.nist.gov/glossary/term/man_in_the_middle_attack" target="_blank">[Citation: NIST Glossary - MitM]</a></em>.</p>
+
+            
+
+            <h2>Techniques: SSL Stripping and DNS Spoofing</h2>
+            <p>Beyond simple eavesdropping, advanced MitM attackers employ incredibly deceptive techniques such as "SSL Stripping" and "DNS Spoofing" to guarantee the capture of highly lucrative data even when the user attempts to act securely. In a DNS spoofing scenario, the attacker corrupts the local network's domain name system, so when a user types a legitimate URL like 'www.chase.com' into their browser, the compromised network secretly redirects them to a visually identical, pixel-perfect fraudulent website hosted by the attacker, designed solely to harvest their login credentials. SSL stripping is an even more insidious tactic where the attacker intercepts the initial secure HTTPS connection request made by the user and maliciously downgrades the connection to a highly vulnerable, unencrypted HTTP protocol. To the untrained eye, the website looks completely normal and functional, but because the crucial encryption layer has been stripped away by the attacker sitting in the middle, every single piece of data entered—from credit card numbers to highly confidential corporate communications—is transmitted in plain, easily readable text directly into the attacker's database.</p>
+        </div>
+    </div>
+    <a href="bot.html" class="chatbot-float"><img src="https://api.dicebear.com/7.x/bottts/svg?seed=CyVoid&backgroundColor=b6e3f4" alt="CyVoid Chatbot Vector"></a>
+</body>
+</html>
